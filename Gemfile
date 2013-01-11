@@ -36,3 +36,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+# To use for live validations
+gem 'client_side_validations'
