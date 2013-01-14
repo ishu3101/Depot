@@ -27,7 +27,7 @@ class ProductTest < ActiveSupport::TestCase
 
 
   def new_product(image_url)
-    Product.new(title: "My Book Title", description: "yyy", price: 1, image_url: "zzz.jpg")
+    Product.new(title: "My Book Title", description: "yyy", price: 1, image_url: image_url)
   end
 
   test "product image url must end with one of .jpg, .png, .gif" do
@@ -48,4 +48,18 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal ["has already been taken"], product.errors[:title]
   end
 
+  def new_product_title(title)
+    Product.new(title: title, description: "yyy", price: 1, image_url: "zzz.jpg")
+  end
+
+  test "product title must contain letters, numbers, whitespace, quotation marks or .-_!+" do
+    ok = ["1-d!_-1+", "a!.5 78ABCS!.", "1sD.2 !3-2d", "-3f_+dF", "'a!B21-0+ +-'", "\"9874445\""]
+    bad = ["@1-d!_-1+", "Book", "1sD.2$!3-2d", "-3f_+ dF~", "'a!B223Ss! fSQ241-0+ +-'", "\"9\A.how@areyou874445\""]
+    ok.each do |name|
+      assert new_product_title(name).valid?, "#{name} shouldn't be invalid"
+    end
+    bad.each do |name|
+      assert new_product_title(name).invalid?, "#{name} shouldn't be valid"
+    end
+  end
 end
