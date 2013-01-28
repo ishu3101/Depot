@@ -39,3 +39,6 @@ gem 'jquery-rails'
 
 # To use for live validations
 gem 'client_side_validations'
+
+# To use for pagination
+gem 'will_paginate', '~> 3.0'
