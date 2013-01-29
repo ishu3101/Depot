@@ -15,5 +15,5 @@
 /tmp
 
 # Ignore all the idea config files
-/.idea/workspace.xml
+.idea/*
 
