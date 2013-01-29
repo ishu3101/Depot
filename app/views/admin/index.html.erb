@@ -1,0 +1,7 @@
+<h1>Welcome</h1>
+<p> Time.now <%= Time.now %> </p>
+<p> Time.current <%= Time.current %> </p>
+<p> Time.current <%= Time.now.strftime("%I:%M:%S %z") %> </p>
+<p> Time.time <%= Time.now.to_formatted_s(:time) %> </p>
+<p> Time.time <%= Time.now.to_s(:long) %> </p>
+We have <%= pluralize(@total_orders, "order") %>.
